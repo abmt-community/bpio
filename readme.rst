@@ -2,7 +2,7 @@
 BPIO
 ====
 BluePill IO adapter with ABMT-Node.
-.. image:: pinning.png
+.. image:: ./pinning.png
 
 Install firmware
 ================
