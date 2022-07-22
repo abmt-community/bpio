@@ -1,0 +1,26 @@
+{
+        "BLUE_PILL": {
+                "inherits": ["NUCLEO_F103RB"],
+                "device_has_add": [
+            		"USBDEVICE"
+        		],
+		"device_has_remove":[
+			"CAN",
+			"SERIAL",
+			"SERIAL_FC",
+			"SPI",
+			"SPISLAVE",
+			"SPI_ASYNCH",
+			"SLEEP",
+			"I2CSLAVE",
+			"I2C_ASYNCH",
+			"RTC",
+			"FLASH",
+			"STDIO_MESSAGES",
+			"WATCHDOG",
+			"RESET_REASON"
+
+		]
+        }
+}
+

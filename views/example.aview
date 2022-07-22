@@ -1,0 +1,138 @@
+{
+  "type": "list",
+  "elements": [
+    {
+      "type": "input_num",
+      "param": "pwm_1",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20
+    },
+    {
+      "type": "input_num",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20,
+      "param": "pwm_2"
+    },
+    {
+      "type": "input_num",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20,
+      "param": "pwm_3"
+    },
+    {
+      "type": "input_num",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20,
+      "param": "pwm_4"
+    },
+    {
+      "type": "input_num",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20,
+      "param": "pwm_5"
+    },
+    {
+      "type": "input_num",
+      "min": 0,
+      "max": 1,
+      "step": 0.001,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20,
+      "param": "pwm_6"
+    },
+    {
+      "type": "input_num",
+      "param": "s1_pos",
+      "min": 0,
+      "max": 16000,
+      "step": 1,
+      "btn_val": 1,
+      "show_input": true,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20
+    },
+    {
+      "type": "input_num",
+      "param": "s1_rst",
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "btn_val": 1,
+      "show_input": false,
+      "show_range": true,
+      "show_btn": false,
+      "width": 1517,
+      "height": 20
+    },
+    {
+      "signals": [
+        "bpio_usb.analog_1",
+        "bpio_usb.analog_2",
+        "bpio_usb.analog_3",
+        "bpio_usb.analog_4",
+        "bpio_usb.analog_5",
+        "bpio_usb.analog_6"
+      ],
+      "type": "scope",
+      "time_range": 10,
+      "y_max": "auto",
+      "y_min": "auto",
+      "width": 1517,
+      "height": 150
+    },
+    {
+      "signals": [
+        "mpu_i2c_sensor.acc.x"
+      ],
+      "type": "scope",
+      "time_range": 10,
+      "y_max": "auto",
+      "y_min": "auto",
+      "width": 1517,
+      "height": 150
+    }
+  ],
+  "width": 1517,
+  "height": 852
+}

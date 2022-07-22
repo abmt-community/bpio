@@ -1,0 +1,5 @@
+ROOT=.
+TARGET=BLUE_PILL
+TOOLCHAIN=GCC_ARM
+GCC_PATH=/opt/gcc-arm-none-eabi-9-2020-q2-update/bin/
+GCC_ARM_PATH=/opt/gcc-arm-none-eabi-9-2020-q2-update/bin/

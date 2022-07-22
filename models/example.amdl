@@ -1,0 +1,334 @@
+{
+  "nodes": [
+    {
+      "name": "delay",
+      "type": "base",
+      "cfg": {
+        "node": "delay",
+        "data_type": "bool",
+        "start_value": "true",
+        "type_header": ""
+      },
+      "pos": {
+        "x": -572,
+        "y": -135
+      },
+      "rotate": true,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "inv",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    },
+    {
+      "name": "inv",
+      "type": "expression",
+      "cfg": {
+        "function": "!a",
+        "output_name": "out",
+        "output_type": "auto",
+        "type_header": "",
+        "disable_output": false
+      },
+      "pos": {
+        "x": -561,
+        "y": -238
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "a": {
+          "node": "delay",
+          "pin": "out"
+        }
+      },
+      "raster": "1s",
+      "default_values": {
+        "a": ""
+      }
+    },
+    {
+      "name": "pwm_1",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -592,
+        "y": -14
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "pwm_2",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -592,
+        "y": 86
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "pwm_3",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -591,
+        "y": 190
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "pwm_4",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -587,
+        "y": 290
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "pwm_5",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -590,
+        "y": 389
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "pwm_6",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -591,
+        "y": 487
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "s1_pos",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -601,
+        "y": 641
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "rt",
+      "type": "base",
+      "cfg": {
+        "node": "rt",
+        "data_type": "double",
+        "start_value": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -242,
+        "y": -66
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "inv",
+          "pin": "out"
+        }
+      },
+      "default_values": {
+        "in": ""
+      }
+    },
+    {
+      "name": "bpio_usb",
+      "type": "class",
+      "cfg": {
+        "class": "bpio_usb",
+        "prj": "bpio",
+        "stepper_pt2_t": 0.1,
+        "stepper_pt2_d": 1,
+        "pwm_prescaler": 0,
+        "i2c_baudrate": 400000,
+        "enable_steppers": true,
+        "device": "/dev/ttyACM0"
+      },
+      "pos": {
+        "x": 510,
+        "y": 403
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "led": {
+          "node": "rt",
+          "pin": "out"
+        },
+        "pwm_1": {
+          "node": "pwm_1",
+          "pin": "value"
+        },
+        "pwm_2": {
+          "node": "pwm_2",
+          "pin": "value"
+        },
+        "pwm_3": {
+          "node": "pwm_3",
+          "pin": "value"
+        },
+        "pwm_4": {
+          "node": "pwm_4",
+          "pin": "value"
+        },
+        "pwm_5": {
+          "node": "pwm_5",
+          "pin": "value"
+        },
+        "pwm_6": {
+          "node": "pwm_6",
+          "pin": "value"
+        },
+        "stepper_pos_1": {
+          "node": "filter_pos",
+          "pin": "out"
+        },
+        "stepper_reset_1": {
+          "node": "s1_rst",
+          "pin": "value"
+        }
+      },
+      "default_values": {
+        "led": "",
+        "pwm_1": "0",
+        "pwm_2": "0",
+        "pwm_3": "0",
+        "pwm_4": "0",
+        "pwm_5": "0",
+        "pwm_6": "0",
+        "stepper_pos_1": "0",
+        "stepper_reset_1": "false",
+        "stepper_pos_2": "0",
+        "stepper_reset_2": "false",
+        "stepper_pos_3": "0",
+        "stepper_reset_3": "false",
+        "stepper_pos_4": "0",
+        "stepper_reset_4": "false"
+      }
+    },
+    {
+      "name": "filter_pos",
+      "type": "class",
+      "cfg": {
+        "class": "avg_filter",
+        "prj": "control",
+        "size": 25,
+        "initial_value": 0
+      },
+      "pos": {
+        "x": -338,
+        "y": 642
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "in": {
+          "node": "s1_pos",
+          "pin": "value"
+        }
+      },
+      "default_values": {
+        "in": "0"
+      }
+    },
+    {
+      "name": "s1_rst",
+      "type": "base",
+      "cfg": {
+        "node": "parameter",
+        "data_type": "double",
+        "default": 0,
+        "type_header": ""
+      },
+      "pos": {
+        "x": -601,
+        "y": 788
+      },
+      "rotate": false,
+      "comment_out": false
+    },
+    {
+      "name": "mpu_i2c_sensor",
+      "type": "class",
+      "cfg": {
+        "class": "mpu_i2c_sensor",
+        "prj": "io",
+        "enable_magnetometer": false,
+        "use_alternate_address": false
+      },
+      "pos": {
+        "x": 898,
+        "y": 422
+      },
+      "rotate": false,
+      "comment_out": false,
+      "inputs": {
+        "i2c_bus": {
+          "node": "bpio_usb",
+          "pin": "i2c_bus"
+        }
+      },
+      "default_values": {
+        "i2c_bus": ""
+      }
+    }
+  ]
+}

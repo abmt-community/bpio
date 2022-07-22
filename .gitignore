@@ -1,0 +1,9 @@
+.hg*
+build-*/
+firmware/__pycache__
+firmware/.cproject
+firmware/.project
+firmware/.settings
+firmware/BUILD/
+firmware/mbed-os/
+firmware/ARMmbed-mbed-os-mbed-os-6.13.0-0-gd147abc.tar.gz
