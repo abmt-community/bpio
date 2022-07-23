@@ -5,6 +5,8 @@ BluePill IO adapter with ABMT-Node.
 
 .. image:: ./pinning.png
 
+.. image:: ./model_example.png
+
 Install firmware
 ================
 - Get and install stlink utils from https://github.com/stlink-org/stlink
