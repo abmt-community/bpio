@@ -4,23 +4,26 @@
                 "device_has_add": [
             		"USBDEVICE"
         		],
-		"device_has_remove":[
-			"CAN",
-			"SERIAL",
-			"SERIAL_FC",
-			"SPI",
-			"SPISLAVE",
-			"SPI_ASYNCH",
-			"SLEEP",
-			"I2CSLAVE",
-			"I2C_ASYNCH",
-			"RTC",
-			"FLASH",
-			"STDIO_MESSAGES",
-			"WATCHDOG",
-			"RESET_REASON"
-
-		]
+			"device_has_remove":[
+				"CAN",
+				"SERIAL",
+				"SERIAL_FC",
+				"SPI",
+				"SPISLAVE",
+				"SPI_ASYNCH",
+				"SLEEP",
+				"I2CSLAVE",
+				"I2C_ASYNCH",
+				"RTC",
+				"FLASH",
+				"STDIO_MESSAGES",
+				"WATCHDOG",
+				"RESET_REASON"
+	
+			],
+			"overrides":{
+				"clock_source": "USE_PLL_HSE_XTAL"
+			}
         }
 }
 

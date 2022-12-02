@@ -1,57 +1,6 @@
 {
+  "model_is_node": false,
   "nodes": [
-    {
-      "name": "delay",
-      "type": "base",
-      "cfg": {
-        "node": "delay",
-        "data_type": "bool",
-        "start_value": "true",
-        "type_header": ""
-      },
-      "pos": {
-        "x": -572,
-        "y": -135
-      },
-      "rotate": true,
-      "comment_out": false,
-      "inputs": {
-        "in": {
-          "node": "inv",
-          "pin": "out"
-        }
-      },
-      "default_values": {
-        "in": ""
-      }
-    },
-    {
-      "name": "inv",
-      "type": "expression",
-      "cfg": {
-        "function": "!a",
-        "output_name": "out",
-        "output_type": "auto",
-        "type_header": "",
-        "disable_output": false
-      },
-      "pos": {
-        "x": -561,
-        "y": -238
-      },
-      "rotate": false,
-      "comment_out": false,
-      "inputs": {
-        "a": {
-          "node": "delay",
-          "pin": "out"
-        }
-      },
-      "raster": "1s",
-      "default_values": {
-        "a": ""
-      }
-    },
     {
       "name": "pwm_1",
       "type": "base",
@@ -174,14 +123,14 @@
         "type_header": ""
       },
       "pos": {
-        "x": -242,
-        "y": -66
+        "x": -298,
+        "y": -164
       },
       "rotate": false,
       "comment_out": false,
       "inputs": {
         "in": {
-          "node": "inv",
+          "node": "counter",
           "pin": "out"
         }
       },
@@ -329,6 +278,25 @@
       "default_values": {
         "i2c_bus": ""
       }
+    },
+    {
+      "name": "counter",
+      "type": "class",
+      "cfg": {
+        "class": "counter",
+        "prj": "math",
+        "start": "0",
+        "end": "1",
+        "step": "1",
+        "auto_restart": true
+      },
+      "pos": {
+        "x": -591,
+        "y": -162
+      },
+      "rotate": false,
+      "comment_out": false,
+      "raster": "1s"
     }
   ]
 }

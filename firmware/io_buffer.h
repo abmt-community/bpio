@@ -20,7 +20,7 @@
 /// the buffer. Use as source: The source overrides the on_new_data function. When you call
 /// the buffers send(ptr,size) function, new data is put into the buffer, and the complete
 /// buffer given to on_new_date of the source. The used data is then poped out of the buffer.
-struct io_buffer{
+struct buffer{
 	uint8_t buffer[128] = {};
 	size_t bytes_used = 0;
 

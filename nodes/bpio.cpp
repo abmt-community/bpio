@@ -55,9 +55,6 @@ void bpio_usb::init(){
 		
 	};
 	
-	// will be removed in future versions. ABMT 13 will have raw mode.
-	serial_to_raw_mode();
-	
 	bpio_parameters p;
 	p.stepper_pt2_t = param_stepper_pt2_t;
 	p.stepper_pt2_d = param_stepper_pt2_d;
@@ -103,25 +100,6 @@ void bpio_usb::tick(){
     s2p.send(1,&d,sizeof(d));
 }
 
-void bpio_usb::serial_to_raw_mode(){
-    // will be removed in future versions. ABMT 13 will have raw mode.
-    termios tio;
-    int ret;
-    ret = ioctl(con->fd, TCGETS, &tio);
-    if(ret != 0){
-    	abmt::os::die(string("unable to set baudrate (TCGETS): " ) + ": " + std::strerror(errno) );
-    }
-    tio.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL | IXON);
-    tio.c_oflag &= ~OPOST;
-    tio.c_lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
-    tio.c_cflag &= ~(CSIZE | PARENB);
-    tio.c_cflag |= CS8;
-    ret = ioctl(con->fd, TCSETS, &tio);
-    if(ret != 0){
-		abmt::os::die(string("unable to set baudrate (TCSETS): " ) + ": " + std::strerror(errno) );
-	}
-}
-
 bpio_i2c::bpio_i2c(bpio_usb& b):bpio(b){
     
 }
@@ -137,16 +115,18 @@ bool bpio_i2c::write_read(uint16_t addr, void* write, uint16_t w_len, void* read
     snd_pack[0] = addr;
     snd_pack[1] = r_len;
     memcpy(snd_pack + 2, write, w_len);
-    bpio.s2p.send(3,snd_pack,2+w_len);
+    bpio.s2p.send(3, snd_pack, 2+w_len);
     delete[] snd_pack;
     
     // read
     for(int i = 0; i < 10; ++i){
-        bpio.lst.wait(1); // calls i2c_response
+        bpio.lst.wait(10); // calls i2c_response
         if(new_data){
             break;
         }
     }
+    read_dst = 0;
+    read_len = 0;
     return i2c_result;
 }
 
@@ -159,5 +139,4 @@ void bpio_i2c::i2c_response(void* data, size_t size){
     i2c_result = d[0];
     memcpy(read_dst, d+1,size -1);
     new_data = true;
-    //cout << "rcv " << size << endl;
 }

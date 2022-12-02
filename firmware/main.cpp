@@ -3,6 +3,7 @@
 #include "I2C.h"
 
 #include <string>
+#include <cmath>
 #include <stddef.h>
 #include <functional>
 #include <abmt/os.h>
@@ -12,7 +13,7 @@
 #include "stepper.h"
 #include "adc.h"
 
-I2C i2c(PB_7, PB_6); // Data-Pin, Clock-Pin
+I2C i2c(PB_9, PB_8); // Data-Pin, Clock-Pin
 
 void abmt::os::die(std::string msg){
 
@@ -21,7 +22,7 @@ void abmt::os::die(std::string msg){
 bool next_adc = true;
 
 #define DEVICE_NUM '0'
-#define BPIO_VERSION '1'
+#define BPIO_VERSION '2'
 
 class USBCDC_BPIO: public USBCDC{
 public:
@@ -70,7 +71,7 @@ volatile uint32_t* reg_pwm_5 = &(TIM2->CCR3);
 volatile uint32_t* reg_pwm_6 = &(TIM2->CCR4);
 
 void setup_pwm(){
-	TIM2->PSC  = 0;  		// makes 48000000/1024 = 46khz
+	TIM2->PSC  = 0;  		// makes 72000000/1024 = 70khz
 	TIM2->ARR  = 1023; 		// max-value -1 => 1024 == max == 3.3v
 	TIM3->PSC  = TIM2->PSC; // prescaler
 	TIM3->ARR  = TIM2->ARR; // max-value
@@ -87,23 +88,24 @@ public:
 	int32_t d_1k;
 	int64_t T_inv;
 	int64_t TT_inv;
-	int32_t ticks_per_sec = 8192;
+	const int32_t ticks_per_sec = 8192;
 	float param_t = 0.1;
     float param_d = 1.0;
 
 	void init(){
 		d_1k = param_d*1024;
-	    float T  = 1.0/2.0/3.1415*param_t;
+	    float T  = 1.0/2.0/M_PI*param_t;
 	    T_inv    = 1.0/T + 0.5;
 	    TT_inv   = 1.0/(T*T) + 0.5;
 	    mem2 = 0;
-	    mem1 = in*ticks_per_sec;
+	    mem1 = in*16*ticks_per_sec;
+
 	}
 
 	void tick(){
-	    mem2 += (in*TT_inv - mem1*TT_inv/ticks_per_sec - mem2*2*d_1k*T_inv/1024)/ticks_per_sec;
-	    mem1 += mem2;
-	    out = mem1/ticks_per_sec;
+		mem2 += (in*16*TT_inv - mem1*TT_inv/ticks_per_sec - mem2*2*d_1k*T_inv/1024)/ticks_per_sec;
+		mem1 += mem2;
+		out = mem1/16/ticks_per_sec;
 	}
 };
 
@@ -164,7 +166,7 @@ bpio_parameters current_config;
 io_stepper s1(PB_12, PB_13);
 io_stepper s2(PB_14, PB_15);
 io_stepper s3(PA_8,  PA_9);
-io_stepper s4(PA_15, PB_3);
+io_stepper s4(PC_14, PC_15);
 
 Ticker step_ticker;
 
@@ -212,6 +214,7 @@ uint8_t i2c_response[129];
 
 
 int main() {
+	led = true; // default off;
 	ThisThread::sleep_for(5ms);
 	USBCDC_BPIO cdc;
 
@@ -223,8 +226,8 @@ int main() {
 	step_ticker.attach(step, 122us); // 1/0.000122 == 8196.7 HZ (around 8192 for pt2 division)
 	uint32_t bytes_read = 0;
 	uint32_t bytes_send = 0;
-	io_buffer in;
-	io_buffer out;
+	buffer in;
+	buffer out;
 	abmt::io::s2p s2p;
 	s2p.set_source(&in);
 	s2p.set_sink(&out);
