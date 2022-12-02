@@ -12,9 +12,13 @@ Flash precompiled firmware
  - ``stm32flash -b 576000 -w firmware/release/bpio_fw_id0.bin -v -g 0x0 /dev/ttyUSB0``
    PA9 -> RX-USB; PA10 -> TX-USB
  - or:
+ 
    - Get and install stlink utils from https://github.com/stlink-org/stlink
+ 
    - Unlock device: ``st-flash --reset write firmware/release/option_bytes_default.bin 0x1FFFF800``
+ 
    - Flash firmware ``st-flash write firmware/release/bpio_fw_id0.bin 0x8000000``
+
 - or: ``pyocd load firmware/release/bpio_fw_id0.bin -f 4000000 -e chip -t stm32f103rc``
  
  
