@@ -27,11 +27,11 @@ udev rules for all ID's
 =======================
 ::
 
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO0", SYMLINK+="ttyBPIO0"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO1", SYMLINK+="ttyBPIO1"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO2", SYMLINK+="ttyBPIO2"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO3", SYMLINK+="ttyBPIO3"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO4", SYMLINK+="ttyBPIO4"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO0", SYMLINK+="ttyBPIO0"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO1", SYMLINK+="ttyBPIO1"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO2", SYMLINK+="ttyBPIO2"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO3", SYMLINK+="ttyBPIO3"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1f00", ATTRS{idProduct}=="2012", ATTRS{product} == "BPIO4", SYMLINK+="ttyBPIO4"
 
 I2C
 ===
