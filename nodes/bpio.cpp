@@ -105,10 +105,10 @@ bpio_i2c::bpio_i2c(bpio_usb& b):bpio(b){
 }
 
 bool bpio_i2c::write_read(uint16_t addr, void* write, uint16_t w_len, void* read, uint16_t r_len){
-    new_data = false;
-    read_dst = read;
-    read_len = r_len;
-    i2c_result = false;
+    new_data   = false;
+    read_dst   = read;
+    read_len   = r_len;
+    i2c_result = false; // default result, likely to be overwritten by i2c_response().
     
     // write
     auto snd_pack = new uint8_t[2+w_len];
@@ -120,7 +120,7 @@ bool bpio_i2c::write_read(uint16_t addr, void* write, uint16_t w_len, void* read
     
     // read
     for(int i = 0; i < 10; ++i){
-        bpio.lst.wait(10); // calls i2c_response
+        bpio.lst.wait(10); // calls i2c_response()
         if(new_data){
             break;
         }
