@@ -13,10 +13,8 @@ Flash precompiled firmware
   | ``stm32flash -w firmware/release/bpio_fw_id0.bin -v -g 0x0 /dev/ttyUSB0``
   | PA9 -> RX-USB; PA10 -> TX-USB
   | Unlock device:
-
-  - ``stm32flash -k /dev/ttyUSB0``
-
-  - ``stm32flash -u /dev/ttyUSB0``
+  | ``stm32flash -k /dev/ttyUSB0``
+  | ``stm32flash -u /dev/ttyUSB0``
 
 - or:
 
@@ -63,7 +61,7 @@ Kown Issues
   | You can call 'flash_default_option_bytes.sh'
     (You may need a new version stlink from https://github.com/stlink-org/stlink.
     Debians current version is to old. "v1.7.0-201-g254a525" worked for me.
-  | **Or you use stm32flash and flash via serial port instead of st-flash. Remove read an write protection with ``-k -u ``.**
+  | **Or you use stm32flash and flash via serial port instead of st-flash. Remove read an write protection with** ``-k -u ``.
 
 - Many BluePills have a wrong (10k) pull up resistor at the USB-Port. In some
   cases this interrupts the detection when plugging in the device. Fix: Add a 1.8k resister from 3.3V to pin A12.
