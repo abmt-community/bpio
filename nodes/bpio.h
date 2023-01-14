@@ -42,7 +42,7 @@ struct bpio_usb{
     float out_analog_6 = 0;
     
     
-    float param_stepper_pt2_t    = 0.1;
+    float param_stepper_pt2_t    = 0.05;
     float param_stepper_pt2_d    = 1;
     uint32_t param_pwm_prescaler = 0;
     uint32_t param_i2c_baudrate = 400000;

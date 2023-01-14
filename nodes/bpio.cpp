@@ -35,6 +35,12 @@ struct bpio_parameters{
 void bpio_usb::init(){
     out_i2c_bus.reset(new bpio_i2c(*this));
     con.reset(new abmt::io::serial(lst, param_device));
+    // Set dtr for windows users
+    int status;
+    ioctl(con->fd,TIOCMGET,&status);
+    status |= TIOCM_DTR;
+    ioctl(con->fd, TIOCMSET, status);
+    
 	s2p.set_sink(con);
 	s2p.set_source(con);
 	s2p.on_new_pack = [this](size_t id, void* data, size_t size){

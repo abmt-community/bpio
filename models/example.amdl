@@ -187,8 +187,8 @@
           "pin": "value"
         },
         "stepper_pos_1": {
-          "node": "filter_pos",
-          "pin": "out"
+          "node": "s1_pos",
+          "pin": "value"
         },
         "stepper_reset_1": {
           "node": "s1_rst",
@@ -211,31 +211,6 @@
         "stepper_reset_3": "false",
         "stepper_pos_4": "0",
         "stepper_reset_4": "false"
-      }
-    },
-    {
-      "name": "filter_pos",
-      "type": "class",
-      "cfg": {
-        "class": "avg_filter",
-        "prj": "control",
-        "size": 25,
-        "initial_value": 0
-      },
-      "pos": {
-        "x": -338,
-        "y": 642
-      },
-      "rotate": false,
-      "comment_out": false,
-      "inputs": {
-        "in": {
-          "node": "s1_pos",
-          "pin": "value"
-        }
-      },
-      "default_values": {
-        "in": "0"
       }
     },
     {

@@ -9,8 +9,14 @@ BluePill IO adapter with ABMT-Node.
 
 Flash precompiled firmware
 ==========================
-- ``stm32flash -b 576000 -w firmware/release/bpio_fw_id0.bin -v -g 0x0 /dev/ttyUSB0``
+- Set outside juper to 1 and press reset. Call:
+  ``stm32flash -w firmware/release/bpio_fw_id0.bin -v -g 0x0 /dev/ttyUSB0``
   PA9 -> RX-USB; PA10 -> TX-USB
+  Unlock device:
+
+  - ``stm32flash -k /dev/ttyUSB0``
+
+  - ``stm32flash -u /dev/ttyUSB0``
 
 - or:
 
@@ -60,6 +66,7 @@ Kown Issues
   **Or you use stm32flash and flash via serial port instead of st-flash.**
 - Many BluePills have a wrong (10k) pull up resistor at the USB-Port. In some
   cases this interrupts the detection when plugging in the device. Fix: Add a 1.8k resister from 3.3V to pin A12.
+- I2C errors like not connected devices break stepper control.
 
 Changes V1 -> V2
 ================
