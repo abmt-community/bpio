@@ -37,9 +37,9 @@ void bpio_usb::init(){
     con.reset(new abmt::io::serial(lst, param_device));
     // Set dtr for windows users
     int status;
-    ioctl(con->fd,TIOCMGET,&status);
+    ioctl(con->fd, TIOCMGET, &status);
     status |= TIOCM_DTR;
-    ioctl(con->fd, TIOCMSET, status);
+    ioctl(con->fd, TIOCMSET, &status);
     
 	s2p.set_sink(con);
 	s2p.set_source(con);
